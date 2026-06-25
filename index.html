@@ -9,11 +9,11 @@
   <style>
     :root {
       --bg: #0f172a;
-      --card-soft: rgba(17, 24, 39, 0.82);
+      --card: rgba(17, 24, 39, 0.84);
       --text: #f9fafb;
       --muted: #cbd5e1;
       --accent: #38bdf8;
-      --accent-2: #22c55e;
+      --accent-green: #22c55e;
       --border: rgba(255, 255, 255, 0.12);
     }
 
@@ -57,7 +57,7 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(14px);
-      background: rgba(15, 23, 42, 0.86);
+      background: rgba(15, 23, 42, 0.88);
       z-index: 10;
     }
 
@@ -150,7 +150,7 @@
     .hero-card,
     .card,
     .experience-card {
-      background: var(--card-soft);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 18px;
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
@@ -273,6 +273,15 @@
 
     .experience-card li {
       margin-bottom: 7px;
+    }
+
+    .goal {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.20);
+      border-radius: 14px;
+      padding: 14px;
+      color: #e0f2fe;
+      margin: 14px 0;
     }
 
     .tech {
@@ -528,6 +537,10 @@
     <div class="experience-card">
       <h3>Argo CD Integration and Automation Platform</h3>
 
+      <div class="goal">
+        <strong>Goal:</strong> Introduce an integration layer between GitHub Actions and Argo CD to accelerate application deployments, standardize operational flows and reduce manual effort during release execution.
+      </div>
+
       <p>
         Designed and developed an automation platform to integrate GitHub Actions
         workflows with Argo CD operations through a REST-based automation layer.
@@ -565,6 +578,10 @@
     <div class="experience-card">
       <h3>GitHub to Keycloak User Internalization</h3>
 
+      <div class="goal">
+        <strong>Goal:</strong> Improve Argo CD authentication and authorization by reflecting GitHub group membership into Keycloak groups, reducing manual access management and keeping user permissions aligned.
+      </div>
+
       <p>
         Developed a worker-based automation process to synchronize GitHub group
         membership with Keycloak groups.
@@ -580,7 +597,7 @@
       <p>
         This approach helped keep identity and access management aligned between
         GitHub and Keycloak, reducing manual user administration and improving
-        operational consistency.
+        operational consistency for Argo CD access control.
       </p>
 
       <p class="tech">
@@ -590,43 +607,11 @@
     </div>
 
     <div class="experience-card">
-      <h3>Dynatrace, Cluster Inventory and Confluence Automation</h3>
-
-      <p>
-        Created a scheduled automation workflow to support observability governance
-        and documentation by collecting and cross-referencing information from multiple
-        sources of truth.
-      </p>
-
-      <p>
-        The workflow runs daily and updates Confluence documentation with a consolidated
-        view of the platform environment, including clusters connected to Argo CD,
-        clusters registered in the ServiceNow cluster inventory and tokens stored in Key Vault.
-      </p>
-
-      <ul>
-        <li>Collects all clusters connected to Argo CD.</li>
-        <li>Collects all clusters registered in the ServiceNow cluster inventory.</li>
-        <li>Collects token information from Key Vault.</li>
-        <li>Executes cross-reference validation across the three sources of truth.</li>
-        <li>Compiles the results into a structured document.</li>
-        <li>Publishes the updated documentation automatically in Confluence.</li>
-      </ul>
-
-      <p>
-        This automation improved visibility, reduced manual documentation effort and
-        helped identify inconsistencies between observability, inventory and access
-        management data.
-      </p>
-
-      <p class="tech">
-        <strong>Technologies:</strong> Dynatrace, Argo CD, ServiceNow, Key Vault,
-        Confluence, GitHub Actions, Scheduled Workflows, Automation, Documentation as Code.
-      </p>
-    </div>
-
-    <div class="experience-card">
       <h3>Dynatrace Deployment Automation with ApplicationSets</h3>
+
+      <div class="goal">
+        <strong>Goal:</strong> Accelerate Dynatrace deployment across many Kubernetes clusters, replacing a previously manual process with a GitOps-based automation workflow.
+      </div>
 
       <p>
         Created an automation process to support the observability team in deploying
@@ -651,11 +636,48 @@
     </div>
 
     <div class="experience-card">
-      <h3>AI-Powered Self-Healing for GitHub Pipelines</h3>
+      <h3>Cluster Inventory and Confluence Automation</h3>
+
+      <div class="goal">
+        <strong>Goal:</strong> Improve platform governance by automatically documenting and validating cluster information across multiple sources of truth.
+      </div>
 
       <p>
-        Designed and implemented an AI automation project to provide Level 1 support
-        for GitHub pipeline failures using autonomous AI agent squads.
+        Created a scheduled workflow that runs daily and updates Confluence
+        documentation with a consolidated view of the platform environment.
+      </p>
+
+      <ul>
+        <li>Collects all clusters connected to Argo CD.</li>
+        <li>Collects all clusters registered in the ServiceNow cluster inventory.</li>
+        <li>Collects token information from Key Vault.</li>
+        <li>Executes cross-reference validation across Argo CD, ServiceNow and Key Vault.</li>
+        <li>Compiles the results into a structured document.</li>
+        <li>Publishes the updated documentation automatically in Confluence.</li>
+      </ul>
+
+      <p>
+        This automation improved visibility, reduced manual documentation effort and
+        helped identify inconsistencies between deployment, inventory and access
+        management data.
+      </p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> Argo CD, ServiceNow, Key Vault, Confluence,
+        GitHub Actions, Scheduled Workflows, Automation, Documentation as Code.
+      </p>
+    </div>
+
+    <div class="experience-card">
+      <h3>AI-Powered Self-Healing for GitHub Pipelines</h3>
+
+      <div class="goal">
+        <strong>Goal:</strong> Provide automated Level 1 support for GitHub pipeline failures and reduce repetitive troubleshooting work through autonomous AI agents.
+      </div>
+
+      <p>
+        Designed and implemented an AI automation project to support GitHub pipeline
+        failures using autonomous AI agent squads.
       </p>
 
       <p>
@@ -695,6 +717,10 @@
     <div class="experience-card">
       <h3>AI and LLM Automation Experience</h3>
 
+      <div class="goal">
+        <strong>Goal:</strong> Use AI and LLM-based automation to improve operational workflows, knowledge retrieval and decision support.
+      </div>
+
       <p>
         I have practical experience with AI and LLMs, including both ready-to-use
         productivity tools and the development of more complex automation architectures.
@@ -722,14 +748,7 @@
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
-
-  <p class="section-description">
-    I am open to conversations about Platform Engineering, SRE, DevOps, Cloud Engineering,
-    GitOps, Kubernetes, Observability and AI-powered infrastructure operations.
-  </p>
-
   <div class="contact">
-    <a class="button" href="https://github.com/srjosemauricio" target="_blank">GitHub</a>
     <a class="button secondary" href="https://www.linkedin.com/in/jose-mauricio-simao-ramos/" target="_blank">LinkedIn</a>
   </div>
 </section>
