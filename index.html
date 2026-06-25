@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>José Maurício Ramos | SRE & Cloud Engineering</title>
+  <title>José Maurício Simão Ramos | Platform Engineer & SRE</title>
 
   <style>
     :root {
       --bg: #0f172a;
       --card: #111827;
-      --card-light: #1f2937;
+      --card-soft: rgba(17, 24, 39, 0.78);
       --text: #f9fafb;
       --muted: #cbd5e1;
+      --muted-2: #94a3b8;
       --accent: #38bdf8;
       --accent-2: #22c55e;
       --border: rgba(255, 255, 255, 0.12);
@@ -24,10 +25,14 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 35%),
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
         radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 30%),
         var(--bg);
       color: var(--text);
@@ -44,18 +49,47 @@
     }
 
     .container {
-      width: min(1100px, 92%);
+      width: min(1120px, 92%);
       margin: 0 auto;
     }
 
+    nav {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(15, 23, 42, 0.82);
+      z-index: 10;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
     header {
-      padding: 80px 0 50px;
+      padding: 78px 0 56px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 32px;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 34px;
       align-items: center;
     }
 
@@ -71,10 +105,10 @@
     }
 
     h1 {
-      font-size: clamp(40px, 6vw, 72px);
+      font-size: clamp(38px, 6vw, 70px);
       line-height: 1.05;
       letter-spacing: -2px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .highlight {
@@ -82,9 +116,9 @@
     }
 
     .subtitle {
-      font-size: 22px;
+      font-size: 21px;
       color: var(--muted);
-      max-width: 760px;
+      max-width: 780px;
       margin-bottom: 28px;
     }
 
@@ -102,7 +136,12 @@
       border: 1px solid var(--border);
       background: var(--accent);
       color: #020617;
-      font-weight: 700;
+      font-weight: 800;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      opacity: 0.92;
     }
 
     .button.secondary {
@@ -111,7 +150,7 @@
     }
 
     .hero-card {
-      background: rgba(17, 24, 39, 0.72);
+      background: var(--card-soft);
       border: 1px solid var(--border);
       border-radius: 22px;
       padding: 28px;
@@ -129,18 +168,18 @@
     }
 
     section {
-      padding: 38px 0;
+      padding: 42px 0;
     }
 
     .section-title {
-      font-size: 30px;
-      margin-bottom: 18px;
-      letter-spacing: -0.5px;
+      font-size: 32px;
+      margin-bottom: 16px;
+      letter-spacing: -0.7px;
     }
 
     .section-description {
       color: var(--muted);
-      max-width: 820px;
+      max-width: 880px;
       margin-bottom: 26px;
     }
 
@@ -151,7 +190,7 @@
     }
 
     .card {
-      background: rgba(17, 24, 39, 0.72);
+      background: var(--card-soft);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 22px;
@@ -183,13 +222,37 @@
       font-size: 14px;
     }
 
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .timeline-item {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.24);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: #dcfce7;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+    }
+
     .experience {
       display: grid;
       gap: 18px;
     }
 
     .experience-card {
-      background: rgba(17, 24, 39, 0.72);
+      background: var(--card-soft);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 24px;
@@ -205,10 +268,19 @@
       margin-bottom: 12px;
     }
 
+    .experience-card ul {
+      color: var(--muted);
+      margin: 12px 0 12px 20px;
+    }
+
+    .experience-card li {
+      margin-bottom: 7px;
+    }
+
     .tech {
       color: var(--text);
       font-size: 14px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .notice {
@@ -234,17 +306,20 @@
       margin-top: 18px;
     }
 
-    @media (max-width: 860px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .grid {
+    @media (max-width: 900px) {
+      .hero,
+      .grid,
+      .timeline {
         grid-template-columns: 1fr;
       }
 
       header {
-        padding-top: 50px;
+        padding-top: 52px;
+      }
+
+      .nav-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
@@ -252,35 +327,49 @@
 </head>
 
 <body>
+  <nav>
+    <div class="container nav-content">
+      <div class="brand">José Maurício Simão Ramos</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <header>
     <div class="container hero">
       <div>
-        <span class="badge">Senior SRE • Cloud Engineering • DevOps • AI Automation</span>
+        <span class="badge">Platform Engineer • SRE • DevOps • Cloud • AI Automation</span>
 
 ```
     <h1>
-      José Maurício Ramos<br />
-      <span class="highlight">Reliability, Cloud & Automation</span>
+      Building reliable platforms with<br />
+      <span class="highlight">automation, cloud and AI.</span>
     </h1>
 
     <p class="subtitle">
-      Technology professional focused on building reliable, scalable and automated
-      infrastructure platforms using Kubernetes, Terraform, GitOps, observability
-      and AI-powered operational workflows.
+      I am a Platform Engineer, SRE and DevOps professional with experience in
+      technology since 2011 and DevOps practices since 2018. I work with Kubernetes,
+      GitOps, cloud infrastructure, observability, automation and AI-powered
+      operational workflows.
     </p>
 
     <div class="actions">
-      <a class="button" href="#experience">View Experience</a>
-      <a class="button secondary" href="#contact">Contact</a>
+      <a class="button" href="#experience">View Professional Experience</a>
+      <a class="button secondary" href="https://www.linkedin.com/in/jose-mauricio-simao-ramos/" target="_blank">LinkedIn</a>
     </div>
   </div>
 
   <div class="hero-card">
-    <h3>Professional Focus</h3>
-    <p><strong>SRE:</strong> reliability, incident response, observability and operational excellence.</p>
-    <p><strong>Cloud:</strong> multi-cloud infrastructure across AWS, Azure and GCP.</p>
-    <p><strong>Automation:</strong> Terraform, ArgoCD, GitHub workflows and Python.</p>
-    <p><strong>AI:</strong> LLM/RAG initiatives to improve documentation, support and troubleshooting.</p>
+    <h3>Professional Summary</h3>
+    <p><strong>Name:</strong> José Maurício Simão Ramos</p>
+    <p><strong>Focus:</strong> Platform Engineering, SRE, DevOps, Cloud and AI Automation.</p>
+    <p><strong>Since 2011:</strong> working in technology and infrastructure environments.</p>
+    <p><strong>Since 2018:</strong> working with DevOps, automation and modern delivery practices.</p>
+    <p><strong>Education:</strong> Computer Science degree and technical background in networking.</p>
   </div>
 </div>
 ```
@@ -290,19 +379,46 @@
   <main class="container">
     <section id="about">
       <h2 class="section-title">About Me</h2>
-      <p class="section-description">
-        I have experience working with infrastructure, cloud platforms, Kubernetes,
-        automation, observability and production operations. My background combines
-        technical infrastructure knowledge with a reliability mindset, helping teams
-        reduce manual work, improve visibility and deliver more stable systems.
-      </p>
 
 ```
   <p class="section-description">
-    I am especially interested in Site Reliability Engineering, platform engineering,
-    cloud automation and the use of AI to improve operational workflows, knowledge
-    retrieval and incident response.
+    I started my career in technology in 2011 and have been working with DevOps
+    practices since 2018. My background combines infrastructure, networking,
+    cloud platforms, automation, reliability engineering and software development.
   </p>
+
+  <p class="section-description">
+    I hold a technical degree in Computer Networking, completed in 2010, and a
+    Computer Science degree, completed in 2020. This combination gives me a strong
+    foundation across both infrastructure and software engineering.
+  </p>
+
+  <p class="section-description">
+    My work is focused on building scalable internal platforms, automating operational
+    workflows, improving deployment reliability, strengthening observability and using
+    AI to reduce manual support effort and accelerate incident resolution.
+  </p>
+</section>
+
+<section id="career">
+  <h2 class="section-title">Career Foundation</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>2010</strong>
+      <span>Technical degree in Computer Networking.</span>
+    </div>
+
+    <div class="timeline-item">
+      <strong>2011</strong>
+      <span>Started working professionally in technology and infrastructure.</span>
+    </div>
+
+    <div class="timeline-item">
+      <strong>2018+</strong>
+      <span>DevOps, automation, platform engineering, cloud and reliability practices.</span>
+    </div>
+  </div>
 </section>
 
 <section id="skills">
@@ -310,38 +426,93 @@
 
   <div class="grid">
     <div class="card">
-      <h3>Cloud & Infrastructure</h3>
-      <p>Experience with cloud environments, infrastructure operations and distributed systems.</p>
+      <h3>Platform Engineering</h3>
+      <p>
+        Internal platforms, developer experience, GitOps workflows, automation APIs
+        and integration between engineering tools.
+      </p>
       <div class="tags">
+        <span class="tag">Platform Engineering</span>
+        <span class="tag">Internal Developer Platform</span>
+        <span class="tag">Developer Experience</span>
+        <span class="tag">Automation APIs</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>DevOps & GitOps</h3>
+      <p>
+        Deployment automation, GitHub Actions, Argo CD integrations, CI/CD workflows
+        and infrastructure delivery processes.
+      </p>
+      <div class="tags">
+        <span class="tag">DevOps</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Argo CD</span>
+        <span class="tag">CI/CD</span>
+        <span class="tag">GitOps</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Cloud & Kubernetes</h3>
+      <p>
+        Kubernetes-based platforms, AKS, cloud infrastructure, multi-cloud experience
+        and infrastructure automation.
+      </p>
+      <div class="tags">
+        <span class="tag">Kubernetes</span>
+        <span class="tag">AKS</span>
         <span class="tag">AWS</span>
         <span class="tag">Azure</span>
         <span class="tag">GCP</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Networking</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Kubernetes & GitOps</h3>
-      <p>Support for container platforms, deployment workflows and GitOps-based delivery.</p>
-      <div class="tags">
-        <span class="tag">Kubernetes</span>
-        <span class="tag">ArgoCD</span>
         <span class="tag">Terraform</span>
-        <span class="tag">GitHub</span>
-        <span class="tag">CI/CD</span>
       </div>
     </div>
 
     <div class="card">
-      <h3>Reliability & Automation</h3>
-      <p>Focus on reducing toil, improving observability and supporting production reliability.</p>
+      <h3>Backend Automation</h3>
+      <p>
+        Python services, REST APIs, async processing, authentication, messaging
+        and database integrations.
+      </p>
       <div class="tags">
-        <span class="tag">SRE</span>
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Swagger</span>
+        <span class="tag">RabbitMQ</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Keycloak</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Observability</h3>
+      <p>
+        Monitoring, deployment automation for observability components and reliability
+        practices for production environments.
+      </p>
+      <div class="tags">
+        <span class="tag">Dynatrace</span>
         <span class="tag">Prometheus</span>
         <span class="tag">Grafana</span>
-        <span class="tag">Python</span>
-        <span class="tag">LLM/RAG</span>
+        <span class="tag">SRE</span>
+        <span class="tag">Incident Response</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>AI Automation</h3>
+      <p>
+        Practical experience with AI tools, LLMs, Copilot and autonomous agent
+        architectures for operational automation.
+      </p>
+      <div class="tags">
+        <span class="tag">AI Automation</span>
+        <span class="tag">LLM</span>
+        <span class="tag">AutoGen</span>
+        <span class="tag">Copilot</span>
+        <span class="tag">Self-Healing</span>
       </div>
     </div>
   </div>
@@ -349,97 +520,179 @@
 
 <section id="experience">
   <h2 class="section-title">Selected Professional Experiences</h2>
+
   <p class="section-description">
-    The examples below summarize professional experiences and technical initiatives.
-    Some details were intentionally generalized to protect company information,
-    internal architecture and confidential data.
+    The examples below summarize real professional initiatives. Some details were
+    intentionally generalized to protect company information, internal architecture,
+    private repositories and confidential data.
   </p>
 
   <div class="experience">
     <div class="experience-card">
-      <h3>Kubernetes Platform Automation</h3>
+      <h3>Argo CD Integration and Automation Platform</h3>
+
       <p>
-        Worked on cloud infrastructure and application delivery initiatives involving
-        Kubernetes, Terraform and GitOps practices.
+        Designed and developed an automation system to integrate GitHub Actions
+        workflows with Argo CD operations through a REST-based automation layer.
       </p>
+
       <p>
-        The goal was to improve deployment reliability, reduce manual operational work
-        and create a more standardized infrastructure delivery process.
+        The platform was built using Python, FastAPI and Swagger, with authentication
+        integrated through Keycloak. It also used RabbitMQ for asynchronous processing
+        and PostgreSQL for persistence.
       </p>
-      <p class="tech"><strong>Technologies:</strong> Kubernetes, Terraform, ArgoCD, GitHub, Cloud Infrastructure.</p>
+
+      <ul>
+        <li>Create Argo CD applications.</li>
+        <li>Create Argo CD projects.</li>
+        <li>Delete applications.</li>
+        <li>Trigger application sync operations.</li>
+        <li>Change project configuration.</li>
+        <li>Change target clusters.</li>
+        <li>Return confirmed logs or streaming progress back to GitHub Actions.</li>
+      </ul>
+
+      <p>
+        In the deployment workflow, GitHub Actions calls the automation API, which
+        starts an asynchronous process. The worker checks whether the application
+        already exists. If it exists, the process continues to sync. If it does not
+        exist, the automation creates the application and then continues the sync flow.
+      </p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> Python, FastAPI, Swagger, Keycloak, Argo CD,
+        GitHub Actions, RabbitMQ, PostgreSQL, REST APIs, Async Processing.
+      </p>
     </div>
 
     <div class="experience-card">
-      <h3>Observability and Incident Response</h3>
+      <h3>GitHub to Keycloak User Internalization</h3>
+
       <p>
-        Contributed to observability and monitoring initiatives focused on improving
-        system visibility, incident detection and operational response.
+        Developed a worker-based automation process to synchronize GitHub group
+        membership with Keycloak groups.
       </p>
+
       <p>
-        The work involved metrics, dashboards, alerting practices and reliability
-        engineering concepts to support production environments and reduce troubleshooting time.
+        The process is triggered by a scheduled CronJob that calls the automation API.
+        The asynchronous worker retrieves users from GitHub groups, checks whether each
+        user already exists in the corresponding Keycloak group and, when necessary,
+        adds the user to the correct group.
       </p>
-      <p class="tech"><strong>Technologies:</strong> Prometheus, Grafana, Monitoring, Alerting, SRE, Incident Management.</p>
+
+      <p>
+        This approach helped keep identity and access management aligned between
+        GitHub and Keycloak, reducing manual user administration and improving
+        operational consistency.
+      </p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> GitHub API, Keycloak, Python, FastAPI,
+        CronJob, RabbitMQ, PostgreSQL, REST APIs, IAM Automation.
+      </p>
     </div>
 
     <div class="experience-card">
-      <h3>AI-Powered Operational Assistant</h3>
+      <h3>Dynatrace Deployment Automation with AppSets</h3>
+
       <p>
-        Worked on initiatives involving LLM/RAG concepts to support operational workflows,
-        documentation access and troubleshooting processes.
+        Created an automation process to support the observability team in deploying
+        Dynatrace-related configurations across Kubernetes clusters.
       </p>
+
       <p>
-        The goal was to make technical knowledge easier to retrieve, reduce repetitive
-        questions and support faster decision-making during infrastructure and support activities.
+        The workflow allows the observability team to add new entries to a configuration
+        file. At runtime, the automation checks out the target branch, reads the file,
+        generates a new ApplicationSet configuration and applies it to AKS.
       </p>
-      <p class="tech"><strong>Technologies:</strong> Python, LLM, RAG, APIs, Automation, Knowledge Base.</p>
+
+      <p>
+        The ApplicationSet was designed to use Auto Sync, allowing the structure to be
+        replicated automatically across all clusters listed in the configuration file.
+      </p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> Dynatrace, Kubernetes, AKS, Argo CD ApplicationSet,
+        Auto Sync, GitOps, GitHub Actions, Automation.
+      </p>
     </div>
 
     <div class="experience-card">
-      <h3>Multi-Cloud Infrastructure Experience</h3>
+      <h3>AI-Powered Self-Healing for GitHub Pipelines</h3>
+
       <p>
-        Worked with cloud environments across AWS, Azure and GCP, supporting infrastructure,
-        operations and cloud-related initiatives.
+        Designed and implemented an AI automation project to provide Level 1 support
+        for GitHub pipeline failures using autonomous AI agent squads.
       </p>
+
       <p>
-        The experience involved understanding different cloud services, operational patterns,
-        infrastructure management and the challenges of supporting distributed environments.
+        When a pipeline step fails, the system captures the execution logs and invokes
+        a first squad of AI agents. This squad analyzes the logs, identifies the
+        programming language, maps the required tools and categorizes the error.
       </p>
-      <p class="tech"><strong>Technologies:</strong> AWS, Azure, GCP, Cloud Engineering, Infrastructure Operations.</p>
+
+      <p>
+        The output returns to the workflow, which then triggers a second squad focused
+        on resolution. The agents attempt to fix the issue up to three times at runtime.
+      </p>
+
+      <ul>
+        <li>If the fix works, the AI automatically opens a Pull Request with evidence of success.</li>
+        <li>If the issue is not resolved after the attempts, the system creates a detailed Issue for the human team.</li>
+      </ul>
+
+      <p>
+        The goal of the project was to give pipelines a self-healing capability,
+        reducing repetitive support work and accelerating the resolution of common
+        CI/CD failures.
+      </p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> AI Agents, LLMs, AutoGen, GitHub Actions,
+        GitHub API, Pull Requests, Issues, Logs Analysis, Pipeline Automation,
+        Self-Healing.
+      </p>
     </div>
 
     <div class="experience-card">
-      <h3>DevOps and Delivery Workflows</h3>
+      <h3>AI and LLM Automation Experience</h3>
+
       <p>
-        Participated in projects involving automation, version control, deployment processes
-        and collaboration between development and infrastructure teams.
+        I have practical experience with AI and LLMs, including both ready-to-use
+        productivity tools and the development of more complex automation architectures.
       </p>
+
       <p>
-        The focus was to improve delivery consistency, reduce manual steps and support more
-        reliable application lifecycle management.
+        I hold a Copilot certification and use the AutoGen framework to build squads
+        of autonomous AI agents capable of analyzing context, coordinating tasks and
+        supporting operational workflows.
       </p>
-      <p class="tech"><strong>Technologies:</strong> GitHub, GitHub Actions, ArgoCD, CI/CD, Automation.</p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> Copilot, LLMs, AutoGen, AI Agents,
+        Workflow Automation, Operational Intelligence.
+      </p>
     </div>
   </div>
 
   <div class="notice">
     Public source code is not available for some experiences because they were developed
     in professional and company environments. The descriptions focus on responsibilities,
-    technologies and outcomes without exposing confidential information.
+    architecture, technologies and outcomes without exposing confidential information.
   </div>
 </section>
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
+
   <p class="section-description">
-    I am open to conversations about SRE, Cloud Engineering, DevOps, Platform Engineering
-    and AI-powered infrastructure operations.
+    I am open to conversations about Platform Engineering, SRE, DevOps, Cloud Engineering,
+    GitOps, Kubernetes, Observability and AI-powered infrastructure operations.
   </p>
 
   <div class="contact">
     <a class="button" href="https://github.com/srjosemauricio" target="_blank">GitHub</a>
-    <a class="button secondary" href="https://www.linkedin.com/in/SEU-LINKEDIN" target="_blank">LinkedIn</a>
-    <a class="button secondary" href="mailto:SEU-EMAIL@exemplo.com">Email</a>
+    <a class="button secondary" href="https://www.linkedin.com/in/jose-mauricio-simao-ramos/" target="_blank">LinkedIn</a>
   </div>
 </section>
 ```
@@ -448,7 +701,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 José Maurício Ramos. Built with GitHub Pages.</p>
+      <p>© 2026 José Maurício Simão Ramos. Built with GitHub Pages.</p>
     </div>
   </footer>
 </body>
