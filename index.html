@@ -9,11 +9,9 @@
   <style>
     :root {
       --bg: #0f172a;
-      --card: #111827;
-      --card-soft: rgba(17, 24, 39, 0.78);
+      --card-soft: rgba(17, 24, 39, 0.82);
       --text: #f9fafb;
       --muted: #cbd5e1;
-      --muted-2: #94a3b8;
       --accent: #38bdf8;
       --accent-2: #22c55e;
       --border: rgba(255, 255, 255, 0.12);
@@ -30,7 +28,7 @@
     }
 
     body {
-      font-family: Inter, Arial, sans-serif;
+      font-family: Arial, sans-serif;
       background:
         radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
         radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 30%),
@@ -59,7 +57,7 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(14px);
-      background: rgba(15, 23, 42, 0.82);
+      background: rgba(15, 23, 42, 0.86);
       z-index: 10;
     }
 
@@ -149,12 +147,18 @@
       color: var(--text);
     }
 
-    .hero-card {
+    .hero-card,
+    .card,
+    .experience-card {
       background: var(--card-soft);
       border: 1px solid var(--border);
-      border-radius: 22px;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-card {
       padding: 28px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+      border-radius: 22px;
     }
 
     .hero-card h3 {
@@ -179,7 +183,7 @@
 
     .section-description {
       color: var(--muted);
-      max-width: 880px;
+      max-width: 900px;
       margin-bottom: 26px;
     }
 
@@ -190,9 +194,6 @@
     }
 
     .card {
-      background: var(--card-soft);
-      border: 1px solid var(--border);
-      border-radius: 18px;
       padding: 22px;
     }
 
@@ -252,9 +253,6 @@
     }
 
     .experience-card {
-      background: var(--card-soft);
-      border: 1px solid var(--border);
-      border-radius: 18px;
       padding: 24px;
     }
 
@@ -346,15 +344,14 @@
 
 ```
     <h1>
-      Building reliable platforms with<br />
+      Building reliable platforms with
       <span class="highlight">automation, cloud and AI.</span>
     </h1>
 
     <p class="subtitle">
-      I am a Platform Engineer, SRE and DevOps professional with experience in
-      technology since 2011 and DevOps practices since 2018. I work with Kubernetes,
-      GitOps, cloud infrastructure, observability, automation and AI-powered
-      operational workflows.
+      Platform Engineer, SRE and DevOps professional with experience in technology
+      since 2011 and DevOps practices since 2018. I work with Kubernetes, GitOps,
+      cloud infrastructure, observability, automation and AI-powered operational workflows.
     </p>
 
     <div class="actions">
@@ -532,7 +529,7 @@
       <h3>Argo CD Integration and Automation Platform</h3>
 
       <p>
-        Designed and developed an automation system to integrate GitHub Actions
+        Designed and developed an automation platform to integrate GitHub Actions
         workflows with Argo CD operations through a REST-based automation layer.
       </p>
 
@@ -593,7 +590,43 @@
     </div>
 
     <div class="experience-card">
-      <h3>Dynatrace Deployment Automation with AppSets</h3>
+      <h3>Dynatrace, Cluster Inventory and Confluence Automation</h3>
+
+      <p>
+        Created a scheduled automation workflow to support observability governance
+        and documentation by collecting and cross-referencing information from multiple
+        sources of truth.
+      </p>
+
+      <p>
+        The workflow runs daily and updates Confluence documentation with a consolidated
+        view of the platform environment, including clusters connected to Argo CD,
+        clusters registered in the ServiceNow cluster inventory and tokens stored in Key Vault.
+      </p>
+
+      <ul>
+        <li>Collects all clusters connected to Argo CD.</li>
+        <li>Collects all clusters registered in the ServiceNow cluster inventory.</li>
+        <li>Collects token information from Key Vault.</li>
+        <li>Executes cross-reference validation across the three sources of truth.</li>
+        <li>Compiles the results into a structured document.</li>
+        <li>Publishes the updated documentation automatically in Confluence.</li>
+      </ul>
+
+      <p>
+        This automation improved visibility, reduced manual documentation effort and
+        helped identify inconsistencies between observability, inventory and access
+        management data.
+      </p>
+
+      <p class="tech">
+        <strong>Technologies:</strong> Dynatrace, Argo CD, ServiceNow, Key Vault,
+        Confluence, GitHub Actions, Scheduled Workflows, Automation, Documentation as Code.
+      </p>
+    </div>
+
+    <div class="experience-card">
+      <h3>Dynatrace Deployment Automation with ApplicationSets</h3>
 
       <p>
         Created an automation process to support the observability team in deploying
@@ -603,7 +636,7 @@
       <p>
         The workflow allows the observability team to add new entries to a configuration
         file. At runtime, the automation checks out the target branch, reads the file,
-        generates a new ApplicationSet configuration and applies it to AKS.
+        generates a new Argo CD ApplicationSet configuration and applies it to AKS.
       </p>
 
       <p>
@@ -626,19 +659,24 @@
       </p>
 
       <p>
-        When a pipeline step fails, the system captures the execution logs and invokes
-        a first squad of AI agents. This squad analyzes the logs, identifies the
-        programming language, maps the required tools and categorizes the error.
+        The execution is triggered whenever an error occurs in any pipeline step.
+        The system captures the execution logs and invokes a first squad of AI agents
+        responsible for analysis. This squad identifies the programming language,
+        maps the required tools, understands the execution context and categorizes
+        the error.
       </p>
 
       <p>
         The output returns to the workflow, which then triggers a second squad focused
-        on resolution. The agents attempt to fix the issue up to three times at runtime.
+        on resolution. The agents attempt to fix the issue up to three times during
+        runtime.
       </p>
 
       <ul>
         <li>If the fix works, the AI automatically opens a Pull Request with evidence of success.</li>
         <li>If the issue is not resolved after the attempts, the system creates a detailed Issue for the human team.</li>
+        <li>At the end of the execution, the workflow publishes a summary of the analysis and result.</li>
+        <li>The user who triggered the workflow is notified through Microsoft Teams.</li>
       </ul>
 
       <p>
@@ -649,8 +687,8 @@
 
       <p class="tech">
         <strong>Technologies:</strong> AI Agents, LLMs, AutoGen, GitHub Actions,
-        GitHub API, Pull Requests, Issues, Logs Analysis, Pipeline Automation,
-        Self-Healing.
+        GitHub API, Pull Requests, Issues, Microsoft Teams, Logs Analysis,
+        Pipeline Automation, Self-Healing.
       </p>
     </div>
 
